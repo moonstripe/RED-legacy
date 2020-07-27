@@ -1,0 +1,43 @@
+.placeholder {
+    background-color: #333333;
+    height: 100px;
+    width: 100%;
+    color: aliceblue;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.placeholder p{
+    font-size: 24pt;
+}
+
+.hand {
+    background-color: blue;
+    height: 400px;
+    width: 100%;
+    color: aliceblue;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table h4{
+
+    margin: 10px 20px;
+}
+
+#DeckImg {
+    width: 100%;
+}
+
+.card, .card1, .card2, .card3, .card4 {
+    background-color: #fff;
+    height: 150px;
+    width: 90px;
+    margin: 0px 0px 0px 0px;
+}
+
+.card, .card1, .card2, .card3, .card4, p{
+    font-size: 48pt;
+    margin-left: 10px;
+    margin-top: 0px;
+}
