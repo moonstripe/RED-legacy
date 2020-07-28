@@ -74,6 +74,8 @@ deck1.shuffle();
 
 var playerOneHand = [];
 
+var gameStart = false;
+
 var playerTwoHand = [];
 
 var trashPile = [];
@@ -88,13 +90,13 @@ function countHand(hand) {
     var totalScore = 0;
 
     hand.forEach(card => {
-        if (typeof(card) !== "object") {
-            totalScore = totalScore + 0;  
-            
+        if (typeof (card) !== "object") {
+            totalScore = totalScore + 0;
+
         } else {
-            totalScore = totalScore + card.intVal;    
+            totalScore = totalScore + card.intVal;
         }
-        
+
     });
 
     document.getElementById('scoring').innerHTML = `${totalScore}`
@@ -134,7 +136,7 @@ function dealCards(players) {
     });
 
 
-
+    gameStart = true;
     alterHandImage(players[0], trashPile);
 }
 
@@ -151,20 +153,15 @@ function slap(hand, discard) {
             hand.splice(slappable, 1, '');
 
             console.log(hand);
-        } else {
-            document.getElementById(`cardSlot${hand.indexOf(card) + 1}`).style.backgroundColor = "white";
-        }
-
-        
-
+        } 
     });
 
 
     alterHandImage(hand, discard);
-    
+
     console.log(hand);
     console.log(discard);
-    
+
 }
 
 
@@ -187,135 +184,142 @@ function slap(hand, discard) {
 
 // take card from pile
 function takeCardPile(playerHand) {
+    if (gameStart === true) {
 
-    takenCard.push(deck1.deal());
+        takenCard.push(deck1.deal());
 
-    if (confirm(`Do you want the ${takenCard[0].visVal} of ${takenCard[0].suit}?`) === true) {
-        // logic for determining empty Spaces.
+        if (confirm(`Do you want the ${takenCard[0].visVal} of ${takenCard[0].suit}?`) === true) {
+            // logic for determining empty Spaces.
 
-        // var emptySpaces = [];
-        // playerHand.forEach(card => {
-        //     if (card == '') {
-        //         emptySpaces.push(indexOf(card)+1);
-        //     }
-        // });
+            // var emptySpaces = [];
+            // playerHand.forEach(card => {
+            //     if (card == '') {
+            //         emptySpaces.push(indexOf(card)+1);
+            //     }
+            // });
 
-        //  You cannot chose: ${emptySpaces}.
-        var choice = prompt(`Which card do you want to switch with? [clockwise from top left]`)
+            //  You cannot chose: ${emptySpaces}.
+            var choice = prompt(`Which card do you want to switch with? [clockwise from top left]`)
 
-        if (parseInt(choice) === 1) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
+            if (parseInt(choice) === 1) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+
+            } else if (parseInt(choice) === 2) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+            } else if (parseInt(choice) === 3) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+
+
+            } else if (parseInt(choice) === 4) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+
             } else {
-                alert('No card there. Try again.');
-            }
-
-        } else if (parseInt(choice) === 2) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
-            } else {
-                alert('No card there. Try again.');
-            }
-        } else if (parseInt(choice) === 3) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
-            } else {
-                alert('No card there. Try again.');
-            }
-
-
-        } else if (parseInt(choice) === 4) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
-            } else {
-                alert('No card there. Try again.');
+                alert('ur an idiot');
+                gameStart = false;
             }
 
         } else {
-            alert('ur an idiot');
+            trashPile.push(takenCard[0]);
+            takenCard.pop();
         }
+        alterHandImage(playerHand, trashPile);
 
-    } else {
-        trashPile.push(takenCard[0]);
-        takenCard.pop();
+        console.log(playerHand);
     }
-    alterHandImage(playerHand, trashPile);
-
-    console.log(playerHand);
 }
+// take from discard 
 
 function takeDiscard(playerHand, discard) {
+    if (gameStart === true) {
+        takenCard.push(discard[discard.length - 1]);
 
-    takenCard.push(discard[discard.length - 1]);
+        if (confirm(`Do you want the ${takenCard[0].visVal} of ${takenCard[0].suit}?`) === true) {
+            // logic for determining empty Spaces.
 
-    if (confirm(`Do you want the ${takenCard[0].visVal} of ${takenCard[0].suit}?`) === true) {
-        // logic for determining empty Spaces.
+            // var emptySpaces = [];
+            // playerHand.forEach(card => {
+            //     if (card == '') {
+            //         emptySpaces.push(indexOf(card)+1);
+            //     }
+            // });
 
-        // var emptySpaces = [];
-        // playerHand.forEach(card => {
-        //     if (card == '') {
-        //         emptySpaces.push(indexOf(card)+1);
-        //     }
-        // });
+            //  You cannot chose: ${emptySpaces}.
+            var choice = prompt(`Which card do you want to switch with? [clockwise from top left]`)
 
-        //  You cannot chose: ${emptySpaces}.
-        var choice = prompt(`Which card do you want to switch with? [clockwise from top left]`)
+            if (parseInt(choice) === 1) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
 
-        if (parseInt(choice) === 1) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
+            } else if (parseInt(choice) === 2) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+            } else if (parseInt(choice) === 3) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+
+
+            } else if (parseInt(choice) === 4) {
+                if (playerHand[parseInt(choice) - 1] !== "") {
+                    trashPile.push(playerHand[parseInt(choice) - 1]);
+                    playerHand[parseInt(choice) - 1] = takenCard[0];
+                    takenCard.pop();
+                } else {
+                    alert('No card there. Try again.');
+                }
+
             } else {
-                alert('No card there. Try again.');
-            }
-
-        } else if (parseInt(choice) === 2) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
-            } else {
-                alert('No card there. Try again.');
-            }
-        } else if (parseInt(choice) === 3) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
-            } else {
-                alert('No card there. Try again.');
-            }
-
-
-        } else if (parseInt(choice) === 4) {
-            if (playerHand[parseInt(choice)-1] !== "") {
-                trashPile.push(playerHand[parseInt(choice)-1]);
-                playerHand[parseInt(choice)-1] = takenCard[0];
-                takenCard.pop();
-            } else {
-                alert('No card there. Try again.');
+                alert('ur an idiot');
+                gameStart = false;
             }
 
         } else {
-            alert('ur an idiot');
+            trashPile.push(takenCard[0]);
+            takenCard.pop();
         }
+        alterHandImage(playerHand, discard);
 
-    } else {
-        trashPile.push(takenCard[0]);
-        takenCard.pop();
+        console.log(playerHand);
     }
-    alterHandImage(playerHand, discard);
 
-    console.log(playerHand);
 }
 
 

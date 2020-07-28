@@ -1,6 +1,6 @@
 .placeholder {
     background-color: #333333;
-    height: 100px;
+    height: 50px;
     width: 100%;
     color: aliceblue;
     vertical-align: middle;
@@ -20,6 +20,17 @@
     text-align: center;
 }
 
+.crossbar {
+    background-color: #333;
+}
+
+.tabletext h5 {
+    color: white;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+
 .table h4{
 
     margin: 10px 20px;
@@ -33,10 +44,11 @@
     background-color: #fff;
     height: 150px;
     width: 90px;
+    overflow: hidden;
     margin: 0px 0px 0px 0px;
 }
 
-.card, .card1, .card2, .card3, .card4, p{
+.card, .card1, .card2, .card3, .card4 p{
     font-size: 48pt;
     margin-left: 10px;
     margin-top: 0px;

@@ -38,11 +38,13 @@
                     <p id="scoring"></p>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8">
-                    <div class="table">
+                    <div class="container">
                         <div class="row">
+                            <div class="col-3"></div>
                             <div class="col-3">
                                 <h4>Discard</h4>
                                 <div onclick="takeDiscard(playerOneHand, trashPile)" class="card">
@@ -53,62 +55,67 @@
                             <div class="col-3">
                                 <h4>Deck</h4>
                                 <div onclick="takeCardPile(playerOneHand)" class="card">
-                                    <img class="suit" id="DeckImg" src="images/deck.png" />
+                                    <img class="suit" id="DeckImg" src="images/deck_draft.png" />
                                 </div>
                             </div>
-                            <div class="col-6"></div>
+                            <div class="col-3"></div>
                         </div>
                     </div>
                 </div>
+                <div class="col-2"></div>
             </div>
-            <div class="col-2"></div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-
+            <div class="row crossbar">
+                <div class="col-5"></div>
+                <div class="col-2 tabletext">
+                    <h5>Your Hand</h5>
+                </div>
+                <div class="col-5"></div>
             </div>
-            <div class="col-8">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-3">
-                            <div onclick="slap(playerOneHand, trashPile)" class="card card1 leftCol" id="cardSlot1">
-                                <img class="suit" id="card1img" src="" />
-                                <p class="visualValue" id="card1num"></p>
+            <div class="row">
+                <div class="col-2">
 
+                </div>
+                <div class="col-8">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-3">
+                                <div onclick="slap(playerOneHand, trashPile)" class="card card1 leftCol" id="cardSlot1">
+                                    <img class="suit" id="card1img" src="" />
+                                    <p class="visualValue" id="card1num"></p>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div onclick="slap(playerOneHand, trashPile)" class="card card2 rightCol" id="cardSlot2">
-                                <img class="suit" src="" id="card2img" />
-                                <p class="visualValue" id="card2num"></p>
+                            <div class="col-3">
+                                <div onclick="slap(playerOneHand, trashPile)" class="card card2 rightCol"
+                                    id="cardSlot2">
+                                    <img class="suit" src="" id="card2img" />
+                                    <p class="visualValue" id="card2num"></p>
+                                </div>
                             </div>
+                            <div class="col-3"></div>
                         </div>
-                        <div class="col-3"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-3">
-                            <div onclick="slap(playerOneHand, trashPile)" class="card card3 leftCol" id="cardSlot3">
-                                <img class="suit" src="" id="card3img" />
-                                <p class="visualValue" id="card3num"></p>
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-3">
+                                <div onclick="slap(playerOneHand, trashPile)" class="card card3 leftCol" id="cardSlot3">
+                                    <img class="suit" src="" id="card3img" />
+                                    <p class="visualValue" id="card3num"></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div onclick="slap(playerOneHand, trashPile)" class="card card4 rightCol" id="cardSlot4">
-                                <img class="suit" src="" id="card4img" />
-                                <p class="visualValue" id="card4num"></p>
+                            <div class="col-3">
+                                <div onclick="slap(playerOneHand, trashPile)" class="card card4 rightCol"
+                                    id="cardSlot4">
+                                    <img class="suit" src="" id="card4img" />
+                                    <p class="visualValue" id="card4num"></p>
+                                </div>
                             </div>
+                            <div class="col-3"></div>
                         </div>
-                        <div class="col-3"></div>
                     </div>
                 </div>
+                <div class="col-2"></div>
             </div>
-            <div class="col-2">
-
-            </div>
-        </div>
-        </div>
     </main>
 </body>
 
