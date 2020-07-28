@@ -11,6 +11,10 @@
     font-size: 24pt;
 }
 
+.suit {
+    width: 70%;
+}
+
 .hand {
     background-color: blue;
     height: 400px;
